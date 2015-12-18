@@ -1,0 +1,46 @@
+<%= form_for(@person) do |f| %>
+    <% if @person.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+          <ul>
+            <% @person.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+<div class="col-lg-6">
+  <div class="well bs-component">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend></legend>
+        <div class="form-group">
+          <%= f.label :name, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :name, class:'form-control', placeholder: :name %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :cuit, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :cuit, class:'form-control', placeholder: :cuit %>
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :legal  %> <%= :legal %>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<% end %>

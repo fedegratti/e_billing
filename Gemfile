@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use mysql as the database for Active Record
@@ -10,7 +9,7 @@ gem 'pry'
 gem 'pry-rails'
 gem 'pry-byebug'
 
-gem 'bootstrap-generators'
+gem 'bootstrap-sass', '~> 3.3.0.1'
 gem 'bootstrap-material-design'
 
 # Use SCSS for stylesheets
