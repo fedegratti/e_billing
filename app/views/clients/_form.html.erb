@@ -1,0 +1,52 @@
+<%= form_for(@client) do |f| %>
+    <% if @client.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+          <ul>
+            <% @client.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+<div class="col-lg-6">
+  <div class="well bs-component">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend></legend>
+        <div class="form-group">
+          <%= f.label :first_name, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :first_name, class:'form-control', placeholder: :first_name %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :last_name, class:'form-control', placeholder: :last_name %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :cuit, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :cuit, class:'form-control', placeholder: :cuit %>
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :legal  %> <%= :legal %>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<% end %>
