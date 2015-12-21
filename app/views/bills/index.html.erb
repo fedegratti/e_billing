@@ -22,7 +22,7 @@
         <td><%= bill.total_amount %></td>
         <td><%= link_to 'Show', client_bill_path(@client, bill) %></td>
         <td><%= link_to 'Edit', edit_client_bill_path(@client,bill) %></td>
-        <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', client_bill_path(@client, bill), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

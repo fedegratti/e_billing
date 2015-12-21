@@ -1,6 +1,7 @@
 class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
   before_action :set_people, only: [:new, :edit]
+  before_action :set_client, only: [:index, :show, :edit]
 
   # GET /bills
   # GET /bills.json
@@ -16,6 +17,7 @@ class BillsController < ApplicationController
   # GET /bills/new
   def new
     @bill = Bill.new
+    @bill.client = Client.find(params.require (:client_id))
   end
 
   # GET /bills/1/edit
@@ -28,10 +30,9 @@ class BillsController < ApplicationController
     @bill = Bill.new(bill_params)
 
     respond_to do |format|
-      Binding.pry
       if @bill.save
 
-        format.html { redirect_to client_bill_path(@client, @bill), notice: 'Bill was successfully created.' }
+        format.html { redirect_to client_bill_path(@bill.client, @bill), notice: 'Bill was successfully created.' }
         #format.json { render :show, status: :created, location: @bill }
       else
         format.html { render :new }
@@ -43,25 +44,17 @@ class BillsController < ApplicationController
   # PATCH/PUT /bills/1
   # PATCH/PUT /bills/1.json
   def update
-    respond_to do |format|
       if @bill.update(bill_params)
-        format.html { redirect_to @bill, notice: 'Bill was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @bill }
+        redirect_to client_bill_path(@bill.client, @bill), notice: 'Bill was successfully updated.'
       else
-        format.html { render :edit }
-        #format.json { render json: @bill.errors, status: :unprocessable_entity }
+         render :edit
       end
-    end
   end
 
   # DELETE /bills/1
-  # DELETE /bills/1.json
   def destroy
     @bill.destroy
-    respond_to do |format|
-      format.html { redirect_to bills_url, notice: 'Bill was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to client_bills_path(@bill.client), notice: 'Bill was successfully destroyed.'
   end
 
   private
@@ -72,10 +65,14 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:client, :person, :description, :total_amount)
+      params.require(:bill).permit(:client_id, :person_id, :description, :total_amount)
     end
 
     def set_people
       @people = Person.pluck(:name, :id)
+    end
+
+    def set_client
+      @client = Client.find(params.require :client_id)
     end
 end

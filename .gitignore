@@ -78,3 +78,5 @@ config/application.yml
 Icon?
 ehthumbs.db
 Thumbs.db
+
+/.idea

@@ -1,4 +1,4 @@
-<%= form_for(@bill, url: {action: "create"}) do |f| %>
+<%= form_for([@client,@bill], url: { action: action } ) do |f| %>
   <% if @bill.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
@@ -16,6 +16,9 @@
     <form class="form-horizontal">
       <fieldset>
         <legend></legend>
+
+        <%= f.hidden_field :client_id %>
+
 
         <div class="form-group">
           <%= f.label :person, class:'col-lg-2 control-label'  %>
