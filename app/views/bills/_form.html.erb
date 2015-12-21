@@ -1,0 +1,48 @@
+<%= form_for(@bill, url: {action: "create"}) do |f| %>
+  <% if @bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
+
+      <ul>
+      <% @bill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="col-lg-6">
+  <div class="well bs-component">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend></legend>
+
+        <div class="form-group">
+          <%= f.label :person, class:'col-lg-2 control-label'  %>
+          <div class="col-lg-10">
+            <%= f.select :person_id, @people, {}, { class: "form-control", required: true } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_area :description, class:'form-control', rows:3, placeholder: :description %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :total_amount, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :total_amount, class:'form-control', placeholder: :total_amount %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<% end %>

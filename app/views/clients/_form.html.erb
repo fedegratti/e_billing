@@ -29,14 +29,69 @@
           </div>
         </div>
         <div class="form-group">
+          <%= f.label :birthday, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.date_field :birthday, class:'form-control', placeholder: :birthday %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :gender, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <% @genders = options_for_select(
+                    [
+                        ['Male', "M"],
+                        ['Female', "F"]
+                    ]
+                ) %>
+            <%= f.select :gender, @genders, {}, { class:'form-control', required: true } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :dni, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :dni, class:'form-control', placeholder: :dni %>
+          </div>
+        </div>
+        <div class="form-group">
           <%= f.label :cuit, class:'col-lg-2 control-label' %>
           <div class="col-lg-10">
             <%= f.text_field :cuit, class:'form-control', placeholder: :cuit %>
-            <div class="checkbox">
-              <label>
-                <%= f.check_box :legal  %> <%= :legal %>
-              </label>
-            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :email, class:'form-control', placeholder: :email %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :address, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :address, class:'form-control', placeholder: :address %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :telephone, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :telephone, class:'form-control', placeholder: :telephone %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :skype, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :skype, class:'form-control', placeholder: :skype %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :facebook, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :facebook, class:'form-control', placeholder: :facebook %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :bills_issued, class:'col-lg-2 control-label' %>
+          <div class="col-lg-10">
+            <%= f.text_field :bills_issued, class:'form-control', placeholder: :bills_issued %>
           </div>
         </div>
         <div class="form-group">

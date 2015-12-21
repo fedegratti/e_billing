@@ -12,6 +12,10 @@ gem 'pry-byebug'
 gem 'bootstrap-sass', '~> 3.3.0.1'
 gem 'bootstrap-material-design'
 
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
+gem 'better_errors'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

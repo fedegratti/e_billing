@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   resources :people, :constraints => {:format => 'html'}
 
-  resources :clients, :constraints => {:format => 'html'}
-
+  resources :clients, :constraints => {:format => 'html'} do
+    resources :bills, :constraints => {:format => 'html'}
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
