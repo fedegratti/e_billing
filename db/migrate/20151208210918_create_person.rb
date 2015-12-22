@@ -3,7 +3,7 @@ class CreatePerson < ActiveRecord::Migration
     create_table :people do |t|
       t.string :name, null: false
       t.integer :cuit, null: false, limit: 8
-      t.boolean :legal, null: false
+      t.integer :legal, null: false
       t.timestamps null: false
     end
   end

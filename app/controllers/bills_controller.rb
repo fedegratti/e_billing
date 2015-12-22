@@ -6,11 +6,11 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = Bill.all
+
+    @bills = @client.bills
   end
 
   # GET /bills/1
-  # GET /bills/1.json
   def show
   end
 
@@ -25,24 +25,17 @@ class BillsController < ApplicationController
   end
 
   # POST /bills
-  # POST /bills.json
   def create
     @bill = Bill.new(bill_params)
 
-    respond_to do |format|
       if @bill.save
-
-        format.html { redirect_to client_bill_path(@bill.client, @bill), notice: 'Bill was successfully created.' }
-        #format.json { render :show, status: :created, location: @bill }
+        redirect_to client_bill_path(@bill.client, @bill), notice: 'Bill was successfully created.'
       else
-        format.html { render :new }
-        #format.json { render json: @bill.errors, status: :unprocessable_entity }
+         render :new
       end
-    end
   end
 
   # PATCH/PUT /bills/1
-  # PATCH/PUT /bills/1.json
   def update
       if @bill.update(bill_params)
         redirect_to client_bill_path(@bill.client, @bill), notice: 'Bill was successfully updated.'
@@ -65,7 +58,7 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:client_id, :person_id, :description, :total_amount)
+      params.require(:bill).permit(:client_id, :person_id, :description, :total_amount, :issue_date)
     end
 
     def set_people

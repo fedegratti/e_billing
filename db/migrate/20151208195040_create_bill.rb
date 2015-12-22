@@ -5,6 +5,7 @@ class CreateBill < ActiveRecord::Migration
       t.belongs_to :person, index: true
       t.string :description, null: false
       t.decimal :total_amount, :precision => 8, :scale => 2
+      t.date :issue_date, null:false
       t.timestamps null: false
     end
   end

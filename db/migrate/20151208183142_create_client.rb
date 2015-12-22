@@ -12,7 +12,6 @@ class CreateClient < ActiveRecord::Migration
       t.integer :telephone, limit: 20
       t.string :skype
       t.string :facebook
-      t.integer :bills_issued
       t.timestamps null: false
     end
   end

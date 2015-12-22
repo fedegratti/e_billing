@@ -12,6 +12,8 @@ gem 'pry-byebug'
 gem 'bootstrap-sass', '~> 3.3.0.1'
 gem 'bootstrap-material-design'
 
+gem 'seed_dump'
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 gem 'better_errors'

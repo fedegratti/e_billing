@@ -1,3 +1,4 @@
+<div class="col-lg-6">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -57,9 +58,42 @@
 
 <p>
   <strong>Bills issued:</strong>
-  <%= @client.bills_issued %>
+  <%= @client.bills.count %>
 </p>
+</div>
 
-<%= link_to 'New bill', new_client_bill_path(@client) %>
+<div class="col-lg-6">
+  Age: <%= @client.age %>
+  <br>
+  Total amount of 2015: <%= @client.total_amount_collected_in 2015 %>
+  <br>
+  Amount of bills issued on December: <%= @client.amount_of_bills_issued_on 12 %>
+  <br>
+  <% @people_with_amount = @client.most_bills_issued_people %>
+  <div class="page-header">
+    <h2 id="tables">Most bills issued people</h2>
+  </div>
+  <div class="bs-component">
+    <table class="table table-striped table-hover ">
+      <thead>
+      <tr>
+        <th>Person</th>
+        <th>Amount</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <%  @people_with_amount.each do |person| %>
+          <tr>
+            <td><%= person[0] %></td>
+            <td><%= person[1] %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= link_to 'New bill', new_client_bill_path(@client), class:"btn btn-primary" %>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
