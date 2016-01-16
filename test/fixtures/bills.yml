@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: with_bills
+  person: one
+  description: Bill1
+  total_amount: 111
+  issue_date: 2015-12-17
+
+two:
+  client: with_bills
+  person: one
+  description: Bill2
+  total_amount: 222
+  issue_date: 2016-01-05
+
+three:
+  client: with_bills
+  person: one
+  description: Bill3
+  total_amount: 333
+  issue_date: 2016-01-11

@@ -1,6 +1,6 @@
 
 class Client < ActiveRecord::Base
-  has_many :bills
+  has_many :bills, dependent: :destroy
   validates_associated :bills
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
@@ -40,13 +40,10 @@ class Client < ActiveRecord::Base
       [@asd[index],@asd2[index]]
     end
 
-
     @asd3.sort! { |first, second| second[1] <=> first[1] }
 
     return @asd3
-
   end
-
 
   def total_amount_of (bills)
     bills.inject(0.0) { |sum, bill|  bill.total_amount + sum }

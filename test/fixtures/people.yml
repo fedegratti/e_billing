@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Person1
+  cuit: 12345678901
+  legal: true
+
+two:
+  name: Person2
+  cuit: 12345678901
+  legal: false

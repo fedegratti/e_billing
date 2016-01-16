@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: First
+  last_name: Client
+  birthday: 1990-08-05
+  gender: M
+  dni: 12345678
+  cuit: 12345678901
+  email: MyString@string.com
+  telephone: 1234567890
+  skype: MyString
+
+two:
+  first_name: Second
+  last_name: Client
+  birthday: 1989-12-01
+  gender: M
+  dni: 12345678
+  cuit: 12345678901
+  email: MyString@string.com
+  telephone: 1234567890
+  skype: MyString
+
+with_bills:
+  first_name: Third
+  last_name: Client
+  birthday: 1970-04-03
+  gender: F
+  dni: 12345678
+  cuit: 12345678901
+  email: MyString@string.com
+  telephone: 1234567890
+  skype: MyString
+
