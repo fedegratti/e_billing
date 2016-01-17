@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :clients, :constraints => {:format => 'html'} do
     resources :bills, :constraints => {:format => 'html'}
+    resources :contact_infos, :constraints => {:format => 'html'}
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

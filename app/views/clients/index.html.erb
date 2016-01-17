@@ -19,10 +19,6 @@
         <th>Dni</th>
         <th>Cuit</th>
         <th>Email</th>
-        <th>Address</th>
-        <th>Telephone</th>
-        <th>Skype</th>
-        <th>Facebook</th>
         <th>Bills Issued</th>
         <th colspan="4"></th>
       </tr>
@@ -36,13 +32,9 @@
             <td><%= client.gender == "F" ? "Female" : "Male" %></td>
             <td><%= client.dni %></td>
             <td><%= client.cuit %></td>
-            <td><%= client.email %></td>
-            <td><%= client.address %></td>
-            <td><%= client.telephone %></td>
-            <td><%= client.skype %></td>
-            <td><%= client.facebook %></td>
+            <td><%= client.contact_infos.select { |c| c.name == "email" }[0].value %></td>
             <td><%= client.bills.count %></td>
-            <td><%= link_to 'Show', client %></td>
+            <td><%= link_to 'More info', client %></td>
             <td><%= link_to 'List bills', client_bills_path(client) %></td>
             <td><%= link_to 'Edit', edit_client_path(client) %></td>
             <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>

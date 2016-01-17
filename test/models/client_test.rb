@@ -12,14 +12,9 @@ class ClientTest < ActiveSupport::TestCase
       c.first_name="test"
       c.last_name="test"
       c.birthday= Date.today
-      c.address = "test streeet"
       c.dni=12345678
       c.cuit=12345678901
       c.gender="M"
-      c.email="test@test.com"
-      c.telephone=22145654352
-      c.skype="testSkype"
-      c.facebook="testFacebook"
     end
 
     assert @good_client.save
@@ -27,17 +22,12 @@ class ClientTest < ActiveSupport::TestCase
 
   test 'new client with invalid data' do
     @bad_client = Client.new do |c|
-      c.first_name=123
-      c.last_name=123
+      c.first_name=
+      c.last_name=1
       c.birthday= "today"
-      c.address = 123
-      c.dni="12345678"
-      c.cuit="12345678901"
-      c.gender=
-      c.email="te"
-      c.telephone="22145654352"
-      c.skype=1234
-      c.facebook=1234
+      c.dni="asd"
+      c.cuit="asd"
+      c.gender=""
     end
 
     assert_not @bad_client.save
@@ -63,5 +53,9 @@ class ClientTest < ActiveSupport::TestCase
     assert_difference('Client.count', -1) do
             @client_without_bills.destroy
         end
+  end
+
+  test 'delete client with registered contact infos' do
+      assert false
   end
 end

@@ -4,9 +4,7 @@ class BillsController < ApplicationController
   before_action :set_client, only: [:index, :show, :edit]
 
   # GET /bills
-  # GET /bills.json
   def index
-
     @bills = @client.bills
   end
 
@@ -27,7 +25,6 @@ class BillsController < ApplicationController
   # POST /bills
   def create
     @bill = Bill.new(bill_params)
-
       if @bill.save
         redirect_to client_bill_path(@bill.client, @bill), notice: 'Bill was successfully created.'
       else

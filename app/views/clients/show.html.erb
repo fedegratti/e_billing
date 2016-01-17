@@ -31,30 +31,13 @@
   <%= @client.cuit %>
 </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+<% for @contact_info in @client.contact_infos %>
+  <p>
+    <strong><%= @contact_info.name.titleize %>:</strong>
+    <%= @contact_info.value %>
+  </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @client.address %>
-</p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @client.telephone %>
-</p>
-
-<p>
-  <strong>Skype:</strong>
-  <%= @client.skype %>
-</p>
-
-<p>
-  <strong>Facebook:</strong>
-  <%= @client.facebook %>
-</p>
+<% end %>
 
 <p>
   <strong>Bills issued:</strong>
@@ -95,5 +78,6 @@
 </div>
 
 <%= link_to 'New bill', new_client_bill_path(@client), class:"btn btn-primary" %>
+<%= link_to 'New contact info', new_client_contact_info_path(@client), class:"btn btn-primary" %>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

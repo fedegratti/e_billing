@@ -1,4 +1,3 @@
-
 class Person < ActiveRecord::Base
   has_many :bills, dependent: :destroy
   validates_associated :bills

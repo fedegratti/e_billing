@@ -1,0 +1,46 @@
+<%= form_for([@client,@contact_info], url: { action: action }) do |f| %>
+  <% if @contact_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact_info.errors.count, "error") %> prohibited this contact_info from being saved:</h2>
+
+      <ul>
+      <% @contact_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="col-lg-6">
+  <div class="well bs-component">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend></legend>
+
+        <%= f.hidden_field :client_id %>
+
+        <div class="form-group">
+          <%= f.label :name, class:'col-lg-2 control-label', required: true  %>
+          <div class="col-lg-10">
+          <%= f.text_field :name, class: "form-control", required: true %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :value, class:'col-lg-2 control-label', required: true  %>
+          <div class="col-lg-10">
+          <%= f.text_field :value, class: "form-control", required: true %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<% end %>
