@@ -15,83 +15,128 @@
   <div class="well bs-component">
     <form class="form-horizontal">
       <fieldset>
-        <legend></legend>
-        <div class="form-group">
-          <%= f.label :first_name, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :first_name, class:'form-control', placeholder: :first_name %>
+        <div class="container-fluid">
+          <legend></legend>
+
+          <%= f.hidden_field :cuit %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :first_name, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.text_field :first_name, class:'form-control', placeholder: :first_name %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :last_name, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :last_name, class:'form-control', placeholder: :last_name %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :last_name, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.text_field :last_name, class:'form-control', placeholder: :last_name %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :birthday, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.date_field :birthday, class:'form-control', placeholder: :birthday %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :birthday, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.date_field :birthday, class:'form-control', placeholder: :birthday %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :gender, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <% @genders = options_for_select(
-                    [
-                        ['Male', "M"],
-                        ['Female', "F"]
-                    ]
-                ) %>
-            <%= f.select :gender, @genders, {}, { class:'form-control', required: true } %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :gender, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <% @genders = options_for_select(
+                        [
+                            ['Male', "M"],
+                            ['Female', "F"]
+                        ]
+                    ) %>
+                <%= f.select :gender, @genders, {}, { class:'form-control', required: true } %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :dni, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :dni, class:'form-control', placeholder: :dni %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :dni, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.text_field :dni, class:'form-control', placeholder: :dni %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :cuit, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :cuit, class:'form-control', placeholder: :cuit %>
+          <div class="row">
+            <div class="form-group col-xs-2">
+              <%= f.label :cuit, class:' control-label' %>
+            </div>
+            <div class="form-group col-xs-2">
+              <input class="form-control " placeholder="Type" type="text" id="type_cuit">
+            </div>
+            <div class="form-group col-xs-6">
+              <input class="form-control " placeholder="Number" type="text" id="number_cuit">
+            </div>
+            <div class="form-group col-xs-2">
+              <input class="form-control " placeholder="Verification" type="text" id="verification_cuit">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :email, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :email, class:'form-control', placeholder: :email %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :email, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.text_field :email, class:'form-control', placeholder: :email %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :address, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :address, class:'form-control', placeholder: :address %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :address, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.text_field :address, class:'form-control', placeholder: :address %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :telephone, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :telephone, class:'form-control', placeholder: :telephone %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :telephone, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.text_field :telephone, class:'form-control', placeholder: :telephone %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :skype, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :skype, class:'form-control', placeholder: :skype %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :skype, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.text_field :skype, class:'form-control', placeholder: :skype %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :facebook, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :facebook, class:'form-control', placeholder: :facebook %>
+
+          <div class="row">
+            <div class="form-group">
+              <%= f.label :facebook, class:'col-lg-2 control-label' %>
+              <div class="col-lg-10">
+                <%= f.text_field :facebook, class:'form-control', placeholder: :facebook %>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <div class="col-lg-10 col-lg-offset-2">
-            <button class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+          <div class="row">
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
           </div>
         </div>
       </fieldset>
@@ -99,3 +144,100 @@
   </div>
 </div>
 <% end %>
+
+<script type="text/javascript">
+
+  $( document ).ready(function() {
+    setCuitInputs();
+  });
+
+  $('#new_client').submit (function () {
+    setHiddenCuit();
+    console.log($('#client_cuit').val ());
+  });
+
+  $('#client_dni').keyup (function () {
+
+    $('#number_cuit').val($('#client_dni').val());
+    if ($('#client_dni').val().length == 8)
+    {
+      calculateCuit ($('#client_dni').val());
+    }
+  });
+
+  function calculateCuit(dni)
+  {
+    var gCode = getGenderCode();
+
+    if (gCode == false)
+      return;
+
+    setTypeCuit(gCode);
+
+    dni = dni.split("");
+
+    var almostCuit = dni.map(function (x) {
+      return parseInt(x, 10);
+    });
+
+    almostCuit.unshift(gCode[1]);
+    almostCuit.unshift(gCode[0]);
+
+    var mult = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
+    var total = 0;
+
+    for (var i = 0; i < mult.length; i++)
+    {
+      total += almostCuit[i] * mult[i];
+    }
+
+    var mod = total % 11;
+    var verification = mod == 0 ? 0 : mod == 1 ? 9 : 11 - mod;
+
+    setVerificationCuit (verification);
+  }
+
+  function getGenderCode ()
+  {
+    if ($('#client_gender').val() != "")
+    {
+      if ($('#client_gender').val() == "F")
+        return [2,7];
+      else
+        return [2,0];
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  function setTypeCuit (genderCode)
+  {
+    $('#type_cuit').val (genderCode[0].toString() + genderCode[1].toString());
+  }
+
+  function setVerificationCuit (verification)
+  {
+    $('#verification_cuit').val (verification);
+  }
+
+  function setHiddenCuit ()
+  {
+    $('#client_cuit').val ($('#type_cuit').val() + $('#number_cuit').val() + $('#verification_cuit').val());
+  }
+
+  function setCuitInputs ()
+  {
+    if ($('#client_cuit').val () != "")
+    {
+      var type = $('#client_cuit').val ().substr(0,2);
+      var number = $('#client_cuit').val ().substr(2,8);
+      var verification = $('#client_cuit').val ().substr(10,1);
+
+      $('#type_cuit').val(type);
+      $('#number_cuit').val(number);
+      $('#verification_cuit').val(verification);
+    }
+  }
+</script>
