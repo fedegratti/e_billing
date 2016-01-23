@@ -36,7 +36,6 @@
     <strong><%= @contact_info.name.titleize %>:</strong>
     <%= @contact_info.value %>
   </p>
-
 <% end %>
 
 <p>
@@ -48,10 +47,23 @@
 <div class="col-lg-6">
   Age: <%= @client.age %>
   <br>
-  Total amount of 2015: <%= @client.total_amount_collected_in 2015 %>
   <br>
   Amount of bills issued on December: <%= @client.amount_of_bills_issued_on 12 %>
   <br>
+  <br>
+
+  <div id="selectContainter">
+    <div class="floatLeft"> Total billed amount of </div>
+    <select id="totalAmountSelect" class="floatLeft">
+        <option>2015</option>
+        <option>2016</option>
+        <option>2017</option>
+    </select>
+    <div id="totalAmount" class="floatLeft">
+     =&nbsp; $<%= @client.total_amount_collected_in 2015 %>
+    </div>
+  </div>
+
   <% @people_with_amount = @client.most_bills_issued_people %>
   <div class="page-header">
     <h2 id="tables">Most bills issued people</h2>
@@ -62,7 +74,6 @@
       <tr>
         <th>Person</th>
         <th>Amount</th>
-
       </tr>
       </thead>
       <tbody>
@@ -79,5 +90,21 @@
 
 <%= link_to 'New bill', new_client_bill_path(@client), class:"btn btn-primary" %>
 <%= link_to 'New contact info', new_client_contact_info_path(@client), class:"btn btn-primary" %>
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to 'Edit', edit_client_path(@client), class:"btn btn-primary" %>
+<%= link_to 'Back', clients_path, class:"btn btn-primary" %>
+
+<script type="text/javascript">
+  var total_amount_path = "<%= total_amount_client_path %>"
+
+  $( document ).ready(function() {
+    $('#totalAmountSelect').change(function ()
+      {
+        $.ajax({
+          url: total_amount_path + $('#totalAmountSelect').val(),
+          success: function (data) {
+            $('#totalAmount').html("=&nbsp; $"+data);
+          }
+        });
+      });
+  });
+</script>

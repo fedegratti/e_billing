@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'starjedi';
+    src: url('/assets/starjedi.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'satellite';
+    src: url('/assets/Satellite.otf') format('truetype');
+}
+
+.navbar-brand {
+  font-family: starjedi;
+}
+.noMargin {
+    margin: 0px;
+}
+.noPadding {
+  padding: 0px;
+}
+.floatLeft {
+    float: left;
+    margin-right: 8px;
+}

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #root 'home#index'
 
   resources :people, :constraints => {:format => 'html'}
 
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
     resources :bills, :constraints => {:format => 'html'}
     resources :contact_infos, :constraints => {:format => 'html'}
   end
+
+  get 'clients/:id/total_amount_of/:year' => 'clients#total_amount'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

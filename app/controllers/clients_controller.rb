@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   #it calls set_client before show, edit, update or destroy action
-  before_action :set_client, only: [:show,:edit,:update,:destroy]
+  before_action :set_client, only: [:show,:edit,:update,:destroy, :total_amount]
 
   # GET /clients
   def index
@@ -16,6 +16,13 @@ class ClientsController < ApplicationController
     @client = Client.new
   end
 
+  # GET /clients/1/total_amount_of
+  def total_amount
+    @year = Integer params[:year]
+    @amount = @client.total_amount_collected_in @year
+    render json: @amount
+  end
+
   # GET /clients/1/edit
   def edit
   end
@@ -24,6 +31,7 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new (client_params)
     if @client.save
+
       redirect_to @client, notice: 'Client was successfully created.'
     else
       render :new
@@ -55,5 +63,5 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def client_params
-    params.require(:client).permit(:first_name, :last_name, :birthday, :gender, :dni, :cuit)
+    params.require(:client).permit(:first_name, :last_name, :birthday, :gender, :email, :dni, :cuit)
   end
