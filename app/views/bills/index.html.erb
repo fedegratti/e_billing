@@ -27,7 +27,7 @@
             <td><%= bill.description %></td>
             <td><%= bill.total_amount %></td>
             <td><%= bill.issue_date %></td>
-            <td><%= link_to 'Show', client_bill_path(@client, bill) %></td>
+            <td><%= link_to 'More info', client_bill_path(@client, bill) %></td>
             <td><%= link_to 'Edit', edit_client_bill_path(@client,bill) %></td>
             <td><%= link_to 'Destroy', client_bill_path(@client, bill), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
@@ -39,4 +39,5 @@
 
 <br>
 
-<%= link_to 'New Bill', new_client_bill_path %>
+<%= link_to 'New Bill', new_client_bill_path, class:"btn btn-primary" %>
+<%= link_to 'Back to '+ @client.first_name + ' ' + @client.last_name, client_path(@client), class:"btn btn-primary" %>
