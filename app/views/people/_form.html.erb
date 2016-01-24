@@ -1,42 +1,67 @@
 <%= form_for(@person) do |f| %>
-    <% if @person.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+<% if @person.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
 
-          <ul>
-            <% @person.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+  <ul>
+    <% @person.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
+  </ul>
+</div>
+<% end %>
 
 <div class="col-lg-6">
   <div class="well bs-component">
     <form class="form-horizontal">
       <fieldset>
         <legend></legend>
-        <div class="form-group">
-          <%= f.label :name, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :name, class:'form-control', placeholder: :name %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :cuit, class:'col-lg-2 control-label' %>
-          <div class="col-lg-10">
-            <%= f.text_field :cuit, class:'form-control', placeholder: :cuit %>
-            <div class="checkbox">
-              <label>
-                <%= f.check_box :legal  %> <%= :legal %>
-              </label>
+
+        <%= f.hidden_field :cuit %>
+
+        <div class="row">
+          <div class="form-group">
+            <%= f.label :name, class:'col-lg-2 control-label' %>
+            <div class="col-lg-10">
+              <%= f.text_field :name, class:'form-control', placeholder: :name %>
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <div class="col-lg-10 col-lg-offset-2">
-            <button class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+        <div class="row">
+          <div class="form-group col-xs-2">
+            <%= f.label :cuit, class:' control-label' %>
+          </div>
+          <div class="form-group col-xs-2">
+            <input class="form-control " placeholder="Type" type="text" id="type_cuit" maxlength="2">
+          </div>
+          <div class="form-group col-xs-6">
+            <input class="form-control " placeholder="Number" type="text" id="number_cuit" maxlength="8">
+          </div>
+          <div class="form-group col-xs-2">
+            <input class="form-control " placeholder="Verification" type="text" id="verification_cuit" maxlength="1">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <%= f.label :legal, class:'col-lg-2 control-label' %>
+            <div class="col-lg-10">
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :legal  %>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <%= link_to 'Cancel', people_path, class:"btn btn-default" %>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </div>
         </div>
       </fieldset>
@@ -44,3 +69,33 @@
   </div>
 </div>
 <% end %>
+
+<script type="text/javascript">
+
+  $( document ).ready(function() {
+    setCuitInputs();
+
+    $('.<%= method %>_person').submit (function () {
+      setHiddenCuit();
+    });
+  });
+
+  function setHiddenCuit ()
+  {
+    $('#person_cuit').val ($('#type_cuit').val() + $('#number_cuit').val() + $('#verification_cuit').val());
+  }
+
+  function setCuitInputs ()
+  {
+    if ($('#person_cuit').val () != "")
+    {
+      var type = $('#person_cuit').val ().substr(0,2);
+      var number = $('#person_cuit').val ().substr(2,8);
+      var verification = $('#person_cuit').val ().substr(10,1);
+
+      $('#type_cuit').val(type);
+      $('#number_cuit').val(number);
+      $('#verification_cuit').val(verification);
+    }
+  }
+</script>
