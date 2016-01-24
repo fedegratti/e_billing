@@ -48,7 +48,27 @@
   Age: <%= @client.age %>
   <br>
   <br>
-  Amount of bills issued on December: <%= @client.amount_of_bills_issued_on 12 %>
+  <div id="selectContainter">
+    <div class="floatLeft"> Amount of bills issued in </div>
+    <select id="amountOfBillsSelect" class="floatLeft">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <div id="amountOfBills" class="floatLeft">
+     <%= Time.now.utc.to_date.year %>&nbsp;=&nbsp;<%= @client.amount_of_bills_issued_in 1 %>
+    </div>
+  </div>
+
   <br>
   <br>
 
@@ -56,11 +76,11 @@
     <div class="floatLeft"> Total billed amount of </div>
     <select id="totalAmountSelect" class="floatLeft">
         <option>2015</option>
-        <option>2016</option>
+        <option selected="true">2016</option>
         <option>2017</option>
     </select>
     <div id="totalAmount" class="floatLeft">
-     =&nbsp; $<%= @client.total_amount_collected_in 2015 %>
+     =&nbsp; $<%= @client.total_billed_amount_collected_in 2016 %>
     </div>
   </div>
 
@@ -94,15 +114,28 @@
 <%= link_to 'Back', clients_path, class:"btn btn-primary" %>
 
 <script type="text/javascript">
-  var total_amount_path = "<%= total_amount_client_path %>"
+  var total_billed_amount_path = "<%= total_billed_amount_client_path %>"
+  var amount_of_bills_path = "<%= amount_of_bills_path %>"
 
   $( document ).ready(function() {
+    //Get total billed amount of the selected year
     $('#totalAmountSelect').change(function ()
       {
         $.ajax({
-          url: total_amount_path + $('#totalAmountSelect').val(),
+          url: total_billed_amount_path + $('#totalAmountSelect').val(),
           success: function (data) {
             $('#totalAmount').html("=&nbsp; $"+data);
+          }
+        });
+      });
+
+    //Get amount of bills issued on the selected month
+    $('#amountOfBillsSelect').change(function ()
+      {
+        $.ajax({
+          url: amount_of_bills_path + $('#amountOfBillsSelect').val(),
+          success: function (data) {
+            $('#amountOfBills').html("<%= Time.now.utc.to_date.year %>&nbsp;=&nbsp;"+data);
           }
         });
       });

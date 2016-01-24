@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   #it calls set_client before show, edit, update or destroy action
-  before_action :set_client, only: [:show,:edit,:update,:destroy, :total_amount]
+  before_action :set_client, only: [:show,:edit,:update,:destroy, :total_billed_amount, :amount_of_bills]
   before_action :set_genders, only: [:new, :edit, :show]
 
   # GET /clients
@@ -18,10 +18,17 @@ class ClientsController < ApplicationController
     @client = Client.new
   end
 
-  # GET /clients/1/total_amount_of
-  def total_amount
+  # GET /clients/1/total_billed_amount_of
+  def total_billed_amount
     @year = Integer params[:year]
-    @amount = @client.total_amount_collected_in @year
+    @amount = @client.total_billed_amount_collected_in @year
+    render json: @amount
+  end
+
+  # GET /clients/1/amount_of_bills_in
+  def amount_of_bills
+    @month = Integer params[:month]
+    @amount = @client.amount_of_bills_issued_in @month
     render json: @amount
   end
 

@@ -17,12 +17,12 @@ class Client < ActiveRecord::Base
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
-  def total_amount_collected_in (year)
+  def total_billed_amount_collected_in (year)
    @bills = self.bills.select { |bill| bill.issue_date.year == year };
    total_amount_of @bills
   end
 
-  def amount_of_bills_issued_on (month)
+  def amount_of_bills_issued_in (month)
     @bills =  self.bills.select { |bill| bill.issue_date.year == Time.now.utc.to_date.year && bill.issue_date.month == month};
     @bills.count
   end

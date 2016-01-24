@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :contact_infos, :constraints => {:format => 'html'}
   end
 
-  get 'clients/:id/total_amount_of/:year' => 'clients#total_amount'
+  get 'clients/:id/total_billed_amount_of/:year' => 'clients#total_billed_amount'
+  get 'clients/:id/amount_of_bills_in/:month' => 'clients#amount_of_bills'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
