@@ -1,15 +1,15 @@
-<%= form_for(@client) do |f| %>
-    <% if @client.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+<%= form_for(@client, url: { action: action }) do |f| %>
+<% if @client.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
-          <ul>
-            <% @client.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+  <ul>
+    <% @client.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
+  </ul>
+</div>
+<% end %>
 
 <div class="col-lg-6">
   <div class="well bs-component">
@@ -51,22 +51,27 @@
             <div class="form-group">
               <%= f.label :gender, class:'col-lg-2 control-label' %>
               <div class="col-lg-10">
-                <% @genders = options_for_select(
-                        [
-                            ['Male', "M"],
-                            ['Female', "F"]
-                        ]
-                    ) %>
-                <%= f.select :gender, @genders, {}, { class:'form-control', required: true } %>
+                <%= f.select :gender, @genders, {}, { class: 'form-control', required: true } %>
               </div>
             </div>
           </div>
+
+          <% if action == "create" %>
+          <div class="row">
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="client_email">Email</label>
+              <div class="col-lg-10">
+                <input class="form-control" placeholder="Email" type="text" name="email" id="client_email">
+              </div>
+            </div>
+          </div>
+          <% end %>
 
           <div class="row">
             <div class="form-group">
               <%= f.label :dni, class:'col-lg-2 control-label' %>
               <div class="col-lg-10">
-                <%= f.text_field :dni, class:'form-control', placeholder: :dni %>
+                <%= f.text_field :dni, class:'form-control', placeholder: :dni, maxlength: "8" %>
               </div>
             </div>
           </div>
@@ -76,20 +81,20 @@
               <%= f.label :cuit, class:' control-label' %>
             </div>
             <div class="form-group col-xs-2">
-              <input class="form-control " placeholder="Type" type="text" id="type_cuit">
+              <input class="form-control " placeholder="Type" type="text" id="type_cuit" maxlength="2">
             </div>
             <div class="form-group col-xs-6">
-              <input class="form-control " placeholder="Number" type="text" id="number_cuit">
+              <input class="form-control " placeholder="Number" type="text" id="number_cuit" maxlength="8">
             </div>
             <div class="form-group col-xs-2">
-              <input class="form-control " placeholder="Verification" type="text" id="verification_cuit">
+              <input class="form-control " placeholder="Verification" type="text" id="verification_cuit" maxlength="1">
             </div>
           </div>
 
           <div class="row">
             <div class="form-group">
               <div class="col-lg-10 col-lg-offset-2">
-                <button class="btn btn-default">Cancel</button>
+                <%= link_to 'Cancel', clients_path, class:"btn btn-default" %>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
@@ -105,20 +110,18 @@
 
   $( document ).ready(function() {
     setCuitInputs();
-  });
 
-  $('#new_client').submit (function () {
-    setHiddenCuit();
-    console.log($('#client_cuit').val ());
-  });
+    $('.<%= method %>_client').submit (function () {
+      setHiddenCuit();
+    });
 
-  $('#client_dni').keyup (function () {
-
-    $('#number_cuit').val($('#client_dni').val());
-    if ($('#client_dni').val().length == 8)
-    {
-      calculateCuit ($('#client_dni').val());
-    }
+    $('#client_dni').keyup (function () {
+      $('#number_cuit').val($('#client_dni').val());
+      if ($('#client_dni').val().length == 8)
+      {
+        calculateCuit ($('#client_dni').val());
+      }
+    });
   });
 
   function calculateCuit(dni)

@@ -1,10 +1,12 @@
 class ClientsController < ApplicationController
   #it calls set_client before show, edit, update or destroy action
   before_action :set_client, only: [:show,:edit,:update,:destroy, :total_amount]
+  before_action :set_genders, only: [:new, :edit, :show]
 
   # GET /clients
   def index
     @clients = Client.all
+
   end
 
   # GET /clients/1
@@ -31,8 +33,14 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new (client_params)
     if @client.save
-
-      redirect_to @client, notice: 'Client was successfully created.'
+      @contact_info = ContactInfo.new do |c|
+          c.name = "email"
+          c.value = params[:email]
+          c.client_id = @client.id
+      end
+      if @contact_info.save
+        redirect_to @client, notice: 'Client was successfully created.'
+      end
     else
       render :new
     end
@@ -59,6 +67,10 @@ private
   # Use callbacks to share common setup or constraints between actions.
   def set_client
     @client = Client.find(params[:id])
+  end
+
+  def set_genders
+      @genders = [["Male","M"],["Female","F"]]
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
