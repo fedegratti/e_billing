@@ -28,22 +28,17 @@ class Client < ActiveRecord::Base
   end
 
   def most_bills_issued_people
-    @people = self.bills.group(:person).count
-    @asd = Array.new
-    @asd2 = Array.new
-    @people.each do |person|
+    people = self.bills.map { |b| b.person }.uniq
 
-      @asd << person[0].name
-      @asd2 << person[0].bills.inject(0.0) { |sum, bill|  bill.total_amount + sum }
+    @most_billed = []
+
+    people.each do |person|
+      total = person.bills.select { |b| b.client.id == self.id }.inject(0.0) { |sum, bill|  bill.total_amount + sum }
+      @most_billed << [person, total]
     end
 
-    @asd3 = (0..@asd.length-1).map do | index |
-      [@asd[index],@asd2[index]]
-    end
-
-    @asd3.sort! { |first, second| second[1] <=> first[1] }
-
-    return @asd3
+    @most_billed.sort! { |first, second| second.second <=> first.second }
+    return @most_billed.first 5
   end
 
   def total_amount_of (bills)
