@@ -8,7 +8,10 @@
 }
 
 .navbar-brand {
-  font-family: starjedi;
+  font-family: starjedi !important;
+}
+h1 {
+  font-family: satellite !important;
 }
 .noMargin {
     margin: 0px;
@@ -20,3 +23,4 @@
     float: left;
     margin-right: 8px;
 }
+
