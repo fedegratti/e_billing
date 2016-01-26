@@ -85,6 +85,8 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     nokogiri (1.6.7-x64-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
+    pg (0.18.4)
+    pg (0.18.4-x64-mingw32)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -176,6 +178,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  pg
   pry
   pry-byebug
   pry-rails
