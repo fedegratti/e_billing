@@ -9,7 +9,7 @@ class CreateClients < ActiveRecord::Migration
       t.integer :cuit, null: false, limit: 8
       t.string :email, null: false
       t.string :address
-      t.integer :telephone, limit: 20
+      t.string :telephone
       t.string :skype
       t.string :facebook
       t.timestamps null: false
