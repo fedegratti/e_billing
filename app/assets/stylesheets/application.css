@@ -379,3 +379,10 @@
 body {
     padding-top: 0;
 }
+
+.fontJedi {
+   font-family: starjedi !important;
+}
+.fontSatellite {
+    font-family: satellite !important;
+}

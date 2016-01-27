@@ -1,0 +1,38 @@
+<h1 class="text-center homeText">Welcome to E-billing</h1>
+<h4 class="text-center text-muted">the E-Vader billing system</h4>
+<br>
+<br>
+<br>
+
+<% if !cookies[:side].nil? %>
+  <h2 class="text-center fontJedi">Choose an action to begin</h2>
+    <div class="div-center col-lg-4">
+    <div class="text-right col-lg-4"><%= link_to 'List clients', clients_path, class:"btn btn-primary" %></div>
+    <div class="text-center col-lg-4"></div>
+    <div class="text-left col-lg-4"><%= link_to 'List people', people_path,  class:"btn btn-primary" %></div>
+  </div>
+<% else %>
+
+  <h2 class="text-center fontJedi">Choose your side</h2>
+    <h4 class="text-center text-muted">Only once, you can choose. May the force be with you.</h4>
+  <br>
+  <div class="div-center col-lg-4">
+    <div class="text-right col-lg-4"><a href="javascript:selectSide('navbar-info')" class="btn btn-info">Light side</a></div>
+    <div class="text-center col-lg-4"></div>
+    <div class="text-left col-lg-4"><a href="javascript:selectSide('navbar-danger')" class="btn btn-danger">Dark side</a></div>
+  </div>
+
+<% end %>
+<script type="text/javascript">
+
+  function selectSide (side)
+  {
+    $.ajax({
+      url: <%= side_path %> + side,
+      success: function () {
+        location.reload();
+      }
+    });
+  }
+
+</script>

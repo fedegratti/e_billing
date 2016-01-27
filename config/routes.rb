@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #root 'home#index'
+  root 'home#index'
 
   resources :people, :constraints => {:format => 'html'}
 
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'clients/:id/total_billed_amount_of/:year' => 'clients#total_billed_amount'
   get 'clients/:id/amount_of_bills_in/:month' => 'clients#amount_of_bills'
 
+  get 'set_side/:side' => 'application#set_side'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -7,9 +7,6 @@
     src: url('/assets/Satellite.otf') format('truetype');
 }
 
-.navbar-brand {
-  font-family: starjedi !important;
-}
 h1 {
   font-family: satellite !important;
 }
