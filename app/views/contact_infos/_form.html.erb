@@ -1,7 +1,8 @@
 <%= form_for([@client,@contact_info], url: { action: action }) do |f| %>
   <% if @contact_info.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@contact_info.errors.count, "error") %> prohibited this contact_info from being saved:</h2>
+      <h2><%= pluralize(@contact_info.errors.count, "error") %>
+      <%= t('prohibited_this_from_being_saved', obj: t('contact_info')) %>:</h2>
 
       <ul>
       <% @contact_info.errors.full_messages.each do |message| %>
@@ -20,23 +21,23 @@
         <%= f.hidden_field :client_id %>
 
         <div class="form-group">
-          <%= f.label :name, class:'col-lg-2 control-label', required: true  %>
+          <%= f.label t('name'), class:'col-lg-2 control-label', required: true  %>
           <div class="col-lg-10">
-          <%= f.text_field :name, class: "form-control", required: true %>
+          <%= f.text_field :name, class: "form-control", required: true, placeholder: t('name') %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :value, class:'col-lg-2 control-label', required: true  %>
+          <%= f.label t('value'), class:'col-lg-2 control-label', required: true  %>
           <div class="col-lg-10">
-          <%= f.text_field :value, class: "form-control", required: true %>
+          <%= f.text_field :value, class: "form-control", required: true, placeholder: t('value') %>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10 col-lg-offset-2">
-            <button class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <%= link_to t('cancel'), client_path(@contact_info.client.id), class:"btn btn-default" %>
+            <button type="submit" class="btn btn-primary"><%= t('submit') %></button>
           </div>
         </div>
       </fieldset>

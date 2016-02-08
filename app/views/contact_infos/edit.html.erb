@@ -1,6 +1,3 @@
-<h1>Editing Contact Info</h1>
+<h1><%= t('editing_contact_info') %></h1>
 
 <%= render 'form', action:'update' %>
-
-<%= link_to 'Show', client_contact_infos_path(@client,@contact_info) %> |
-<%= link_to 'Back', client_contact_infos_path %>
