@@ -1,7 +1,8 @@
 <%= form_for(@person) do |f| %>
 <% if @person.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+  <h2><%= pluralize(@person.errors.count, "error") %>
+  <%= t('prohibited_this_from_being_saved', obj: t('person')) %>:</h2>
 
   <ul>
     <% @person.errors.full_messages.each do |message| %>
@@ -18,34 +19,33 @@
         <legend></legend>
 
         <%= f.hidden_field :cuit %>
-
         <div class="row">
           <div class="form-group">
-            <%= f.label :name, class:'col-lg-2 control-label' %>
+            <%= f.label t('name'), class:'col-lg-2 control-label' %>
             <div class="col-lg-10">
-              <%= f.text_field :name, class:'form-control', placeholder: :name %>
+              <%= f.text_field :name, class:'form-control', placeholder: t('name') %>
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class="form-group col-xs-2">
-            <%= f.label :cuit, class:' control-label' %>
+            <%= f.label t('cuit'), class:' control-label' %>
           </div>
           <div class="form-group col-xs-2">
-            <input class="form-control " placeholder="Type" type="text" id="type_cuit" maxlength="2">
+            <input class="form-control " placeholder="<%= t('type') %>" type="text" id="type_cuit" maxlength="2">
           </div>
           <div class="form-group col-xs-6">
-            <input class="form-control " placeholder="Number" type="text" id="number_cuit" maxlength="8">
+            <input class="form-control " placeholder="<%= t('number') %>" type="text" id="number_cuit" maxlength="8">
           </div>
           <div class="form-group col-xs-2">
-            <input class="form-control " placeholder="Verification" type="text" id="verification_cuit" maxlength="1">
+            <input class="form-control " placeholder="<%= t('verification') %>" type="text" id="verification_cuit" maxlength="1">
           </div>
         </div>
 
         <div class="row">
           <div class="form-group">
-            <%= f.label :legal, class:'col-lg-2 control-label' %>
+            <%= f.label t('legal'), class:'col-lg-2 control-label' %>
             <div class="col-lg-10">
               <div class="checkbox">
                 <label>
@@ -59,8 +59,8 @@
         <div class="row">
           <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
-              <%= link_to 'Cancel', people_path, class:"btn btn-default" %>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <%= link_to t('cancel'), people_path, class:"btn btn-default" %>
+              <button type="submit" class="btn btn-primary"><%= t('submit') %></button>
             </div>
           </div>
         </div>
