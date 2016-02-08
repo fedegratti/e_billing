@@ -7,9 +7,9 @@
 <% if !cookies[:side].nil? %>
   <h2 class="text-center fontJedi"><%= t('choose_an_action_to_begin') %></h2>
     <div class="div-center col-lg-4">
-    <div class="text-right col-lg-4"><%= link_to t('list_clients'), clients_path, class:"btn btn-primary" %></div>
+    <div class="text-center col-lg-4"><%= link_to t('list_clients'), clients_path, class:"btn btn-primary" %></div>
     <div class="text-center col-lg-4"></div>
-    <div class="text-left col-lg-4"><%= link_to t('list_people'), people_path,  class:"btn btn-primary" %></div>
+    <div class="text-center col-lg-4"><%= link_to t('list_people'), people_path,  class:"btn btn-primary" %></div>
   </div>
 <% else %>
 
@@ -17,9 +17,9 @@
     <h4 class="text-center text-muted"><%= t('only_once_you_can_choose') %></h4>
   <br>
   <div class="div-center col-lg-4">
-    <div class="text-right col-lg-4"><a href="javascript:selectSide('navbar-info')" class="btn btn-info"><%= t('light_side') %></a></div>
+    <div class="text-center col-lg-4"><a href="javascript:selectSide('navbar-info')" class="btn btn-info"><%= t('light_side') %></a></div>
     <div class="text-center col-lg-4"></div>
-    <div class="text-left col-lg-4"><a href="javascript:selectSide('navbar-danger')" class="btn btn-danger"><%= t('dark_side') %></a></div>
+    <div class="text-center col-lg-4"><a href="javascript:selectSide('navbar-danger')" class="btn btn-danger"><%= t('dark_side') %></a></div>
   </div>
 
 <% end %>
