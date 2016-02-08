@@ -1,16 +1,27 @@
 <%= form_for([@client,@bill], url: { action: action } ) do |f| %>
-  <% if @bill.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bill.errors.count, "error") %>
-      <%= t('prohibited_this_from_being_saved', obj: t('bill')) %>:</h2>
+<% if @bill.errors.any? %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <h2><%= pluralize(@bill.errors.count, "error") %>
+  <%= t('prohibited_this_from_being_saved', obj: t('bill')) %>:</h2>
+    <ul>
+    <% @bill.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+  <%= notice %>
+</div>
+<script type="text/javascript">
+  $( document ).ready(function()
+  {
+    $('.field_with_errors').css ("display","block");
+    $('.field_with_errors').css ("background-color","#eee");
+    $('.field_with_errors').css ("border-radius","3px");
+  });
+</script>
+<% end %>
 
-      <ul>
-      <% @bill.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<h1><%= t(method + '_bill') %></h1>
 
 <div class="col-lg-6">
   <div class="well bs-component">

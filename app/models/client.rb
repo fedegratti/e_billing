@@ -7,6 +7,7 @@ class Client < ActiveRecord::Base
 
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
+  validates :birthday, presence: true
   validates :gender, presence: true, length: { is: 1 }
   validates :dni, presence: true, numericality: true, length: { minimum: 7, maximum: 8 }
   validates :cuit, presence: true, numericality: true, length: { minimum: 10, maximum: 11 }

@@ -27,6 +27,7 @@
       </thead>
       <tbody>
       <% @clients.each do |client| %>
+      <% email = client.contact_infos.select { |c| c.name == "email" }[0] %>
           <tr>
             <td><%= client.first_name %></td>
             <td><%= client.last_name %></td>
@@ -34,7 +35,11 @@
             <td><%= client.gender == "F" ? t('female') : t('male') %></td>
             <td><%= client.dni %></td>
             <td><%= client.cuit %></td>
-            <td><%= client.contact_infos.select { |c| c.name == "email" }[0].value %></td>
+            <td>
+            <% unless email.nil? %>
+              <%= email.value %>
+            <% end %>
+            </td>
             <td><%= client.bills.count %></td>
             <td><%= link_to t('more_info'), client %></td>
             <td><%= link_to t('list_bills'), client_bills_path(client) %></td>

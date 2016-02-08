@@ -51,10 +51,10 @@ en:
 
   ebilling_system: E-Billing system
   edit: "Edit %{obj}"
-  editing_bill: Editing Bill
-  editing_client: Editing Client
-  editing_contact_info: Editing Contact Info
-  editing_person: Editing Person
+  edit_bill: Editing Bill
+  edit_client: Editing Client
+  edit_contact_info: Editing Contact Info
+  edit_person: Editing Person
   email: Email
 
   female: Female

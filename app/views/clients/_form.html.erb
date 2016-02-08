@@ -1,16 +1,27 @@
 <%= form_for(@client, url: { action: action }) do |f| %>
 <% if @client.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@client.errors.count, "error") %>
-  <%= t('prohibited_this_from_being_saved', obj: t('client')) %>:</h2>
-
-  <ul>
-    <% @client.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
+  <div class="alert alert-dismissable alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h2><%= pluralize(@client.errors.count, "error") %>
+    <%= t('prohibited_this_from_being_saved', obj: t('client')) %>:</h2>
+      <ul>
+      <% @client.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+    <%= notice %>
+  </div>
+  <script type="text/javascript">
+    $( document ).ready(function()
+    {
+      $('.field_with_errors').css ("display","block");
+      $('.field_with_errors').css ("background-color","#eee");
+      $('.field_with_errors').css ("border-radius","3px");
+    });
+  </script>
 <% end %>
+
+<h1><%= t(method + '_client') %></h1>
 
 <div class="col-lg-6">
   <div class="well bs-component">
@@ -25,7 +36,7 @@
             <div class="form-group">
               <%= f.label t('first_name'), class:'col-lg-2 control-label' %>
               <div class="col-lg-10">
-                <%= f.text_field :first_name, class:'form-control', placeholder: t('first_name') %>
+                <%= f.text_field :first_name, class:'form-control', placeholder: t('first_name'), required: true %>
               </div>
             </div>
           </div>
@@ -34,7 +45,7 @@
             <div class="form-group">
               <%= f.label t('last_name'), class:'col-lg-2 control-label' %>
               <div class="col-lg-10">
-                <%= f.text_field :last_name, class:'form-control', placeholder: t('last_name') %>
+                <%= f.text_field :last_name, class:'form-control', placeholder: t('last_name'), required: true %>
               </div>
             </div>
           </div>
@@ -62,7 +73,7 @@
             <div class="form-group">
               <label class="col-lg-2 control-label" for="client_email"><%= t('Email') %></label>
               <div class="col-lg-10">
-                <input class="form-control" placeholder="Email" type="text" name="email" id="client_email">
+                <input class="form-control" placeholder="Email" type="text" name="email" id="client_email" required="true" value="<%= @email %>">
               </div>
             </div>
           </div>
@@ -72,7 +83,7 @@
             <div class="form-group">
               <%= f.label t('dni'), class:'col-lg-2 control-label' %>
               <div class="col-lg-10">
-                <%= f.text_field :dni, class:'form-control', placeholder: t('dni'), maxlength: "8" %>
+                <%= f.text_field :dni, class:'form-control', placeholder: t('dni'), maxlength: "8", required: true %>
               </div>
             </div>
           </div>

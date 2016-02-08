@@ -1,6 +1,6 @@
 class BillsController < ApplicationController
   before_action :set_bill, only: [:edit, :update, :destroy]
-  before_action :set_people, only: [:new, :edit]
+  before_action :set_people, only: [:new, :edit, :create, :update]
   before_action :set_client, only: [:index, :edit]
 
   # GET /bills

@@ -20,6 +20,54 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  activerecord:
+    errors:
+      models:
+        client:
+          attributes:
+            first_name:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+            last_name:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+            birthday:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+            dni:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+            cuit:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+        contact_info:
+          attributes:
+            name:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+        person:
+          attributes:
+            name:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+            cuit:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+        bill:
+          attributes:
+            total_amount:
+              blank: no puede quedar vacío
+              not_a_number: no es un número
+              too_short: muy corto
+
   age: Edad
   amount: Cantidad
   amount_of_bills_issued_in: Cantidad de facturas emitidas en
@@ -51,10 +99,10 @@ es:
 
   ebilling_system: E-Billing system
   edit: "Editar %{obj}"
-  editing_bill: Editando Factura
-  editing_client: Editando Cliente
-  editing_contact_info: Editando Información de Contacto
-  editing_person: Editando Persona
+  edit_bill: Editando Factura
+  edit_client: Editando Cliente
+  edit_contact_info: Editando Información de Contacto
+  edit_person: Editando Persona
   email: Email
 
   female: Mujer
@@ -88,7 +136,7 @@ es:
   more_info: Más información
   most_bills_issued_people: Personas que más se ha facturado
 
-  only_once_you_can_choose: Sólo una vez, tu puedes elegir. Que la fuerza te acompañe.
+  only_once_you_can_choose: Solo una vez, tu puedes elegir. Que la fuerza te acompañe.
 
   people: Personas
   person: Persona

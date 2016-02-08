@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   #it calls set_client before show, edit, update or destroy action
   before_action :set_client, only: [:show,:edit,:update,:destroy, :total_billed_amount, :amount_of_bills]
-  before_action :set_genders, only: [:new, :edit, :show]
+  before_action :set_genders, only: [:new, :edit, :show, :create, :update]
 
   # GET /clients
   def index
@@ -48,6 +48,7 @@ class ClientsController < ApplicationController
         redirect_to @client, notice: t('successfully_created',obj: t('client'))
       end
     else
+      @email = params[:email]
       render :new
     end
   end
