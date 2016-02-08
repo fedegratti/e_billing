@@ -37,8 +37,8 @@ es:
   clients: Clientes
   client_information: "Información de %{first_name} %{last_name}"
   contact_info: Información de contacto
-  choose_an_action_to_begin: Elije una acción para comenzar
-  choose_your_side: Elije un lado
+  choose_an_action_to_begin: Elige una acción para comenzar
+  choose_your_side: Elige un lado
   cuit: Cuit
 
   dark_side: Lado oscuro
