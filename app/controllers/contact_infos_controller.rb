@@ -1,15 +1,6 @@
 class ContactInfosController < ApplicationController
-  before_action :set_contact_info, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:index, :show, :edit]
-
-  # GET /contact_infos
-  def index
-    @contact_infos = @client.contact_infos
-  end
-
-  # GET /contact_infos/1
-  def show
-  end
+  before_action :set_contact_info, only: [:edit, :update, :destroy]
+  before_action :set_client, only: [:edit]
 
   # GET /contact_infos/new
   def new
@@ -25,7 +16,7 @@ class ContactInfosController < ApplicationController
   def create
     @contact_info = ContactInfo.new(contact_info_params)
       if @contact_info.save
-        redirect_to client_contact_info_path(@contact_info.client, @contact_info), notice: 'Contact info was successfully created.'
+        redirect_to client_path(@contact_info.client), notice: t('successfully_created',obj: t('contact_info'))
       else
         render :new
       end
@@ -34,7 +25,7 @@ class ContactInfosController < ApplicationController
   # PATCH/PUT /contact_infos/1
   def update
       if @contact_info.update(contact_info_params)
-        redirect_to client_contact_info_path(@contact_info.client,@contact_info), notice: 'Contact info was successfully updated.'
+        redirect_to client_path(@contact_info.client), notice: t('successfully_updated',obj: t('contact_info'))
       else
         render :edit
       end
@@ -43,7 +34,7 @@ class ContactInfosController < ApplicationController
   # DELETE /contact_infos/1
   def destroy
     @contact_info.destroy
-    redirect_to client_contact_infos_path(@contact_info.client), notice: 'Contact info was successfully destroyed.'
+    redirect_to client_path(@contact_info.client), notice: t('successfully_destroyed',obj: t('contact_info'))
   end
 
   private

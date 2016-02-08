@@ -20,4 +20,94 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  age: Age
+  amount: Amount
+  amount_of_bills_issued_in: Amount of bills issued in
+  are_you_sure: Are you sure?
+
+  back: Back
+  back_to: "Back to %{first_name} %{last_name}"
+  bill: Bill
+  bills_information: Bills's Information
+  bills_issued: Bills Issued
+  birthday: Birthday
+
+  cancel: Cancel
+  client: Client
+  client_information: "%{first_name} %{last_name}'s information"
+  clients: Clients
+  contact_info: Contact info
+  choose_an_action_to_begin: Choose an action to begin
+  choose_your_side: Choose your side
+  cuit: Cuit
+
+  dark_side: Light side
+  date_word: Date
+  date:
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+  description: Description
+  destroy: Destroy
+  dni: Dni
+
+  ebilling_system: E-Billing system
+  edit: "Edit %{obj}"
+  editing_bill: Editing Bill
+  editing_client: Editing Client
+  editing_contact_info: Editing Contact Info
+  editing_person: Editing Person
+  email: Email
+
+  female: Female
+  first_name: First Name
+
+  gender: Gender
+
+  issue_date: Issue date
+
+  last_name: Last Name
+  legal: Legal
+  light_side: Light side
+  list_bills: List bills
+  list_clients: List clients
+  list_people: List people
+
+  listing_bills: "Listing %{first_name} %{last_name}'s Bills"
+  listing_clients: Listing clients
+  listing_people: Listing people
+  listing_contact_infos: Listing Contact Infos
+
+  name: Name
+  new_bill: New bill
+  new_contact_info: New contact info
+  new_contact_info_for: "New contact info for %{first_name} %{last_name}"
+  new_client: New Client
+  new_person: New person
+  number: Number
+
+  male: Male
+  more_info: More info
+  most_bills_issued_people: Most bills issued people
+
+  only_once_you_can_choose: Only once, you can choose. May the force be with you.
+
+  people: People
+  person: Person
+  prohibited_this_from_being_saved:  "prohibited this %{obj} from being saved"
+
+  show: Show
+  submit: Submit
+  successfully_created: "%{obj} was successfully created."
+  successfully_destroyed: "%{obj} was successfully destroyed."
+  successfully_updated: "%{obj} was successfully updated."
+
+  total_amount: Total amount
+  total_billed_amount_of: Total billed amount of
+  the_evader_billing_system: the E-Vader billing system
+  type: Type
+
+  value: Value
+  verification: Verification
+
+  welcome_to_ebilling: Welcome to E-billing
+
+  yes: Yes

@@ -1,14 +1,10 @@
 class PeopleController < ApplicationController
-  #it calls set_person before show, edit, update or destroy action
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  #it calls set_person before edit, update or destroy action
+  before_action :set_person, only: [:edit, :update, :destroy]
 
   # GET /people
   def index
     @people = Person.all
-  end
-
-  # GET /people/1
-  def show
   end
 
   # GET /people/new
@@ -24,7 +20,7 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
     if @person.save
-      redirect_to @person, notice: 'Person was successfully created.'
+      redirect_to people_url, notice: t('successfully_created',obj: t('person'))
     else
       render :new
     end
@@ -33,7 +29,7 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   def update
       if @person.update(person_params)
-        redirect_to @person, notice: 'Person was successfully updated.'
+        redirect_to people_url, notice: t('successfully_updated',obj: t('person'))
       else
         render :edit
       end
@@ -42,7 +38,7 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   def destroy
     @person.destroy
-    redirect_to people_url, notice: 'Person was successfully destroyed.'
+    redirect_to people_url, notice: t('successfully_destroyed',obj: t('person'))
   end
 
   private

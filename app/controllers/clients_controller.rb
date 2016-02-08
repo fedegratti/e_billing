@@ -6,7 +6,6 @@ class ClientsController < ApplicationController
   # GET /clients
   def index
     @clients = Client.all
-
   end
 
   # GET /clients/1
@@ -46,7 +45,7 @@ class ClientsController < ApplicationController
           c.client_id = @client.id
       end
       if @contact_info.save
-        redirect_to @client, notice: 'Client was successfully created.'
+        redirect_to @client, notice: t('successfully_created',obj: t('client'))
       end
     else
       render :new
@@ -56,7 +55,7 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   def update
     if @client.update(client_params)
-      redirect_to @client, notice: 'Client was successfully updated.'
+      redirect_to @client, notice: t('successfully_updated',obj: t('client'))
     else
       #It renders the edit.html.erb template belonging to the same controller.
       render :edit
@@ -66,7 +65,7 @@ class ClientsController < ApplicationController
   # DELETE  /clients/1
   def destroy
     @client.destroy
-    redirect_to clients_url, notice: 'Client was successfully destroyed.'
+    redirect_to clients_url, notice: t('successfully_destroyed',obj: t('client'))
   end
 end
 
@@ -77,7 +76,7 @@ private
   end
 
   def set_genders
-      @genders = [["Male","M"],["Female","F"]]
+      @genders = [[t('male'),"M"],[t('female'),"F"]]
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

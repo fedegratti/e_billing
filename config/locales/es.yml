@@ -1,0 +1,113 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  age: Edad
+  amount: Cantidad
+  amount_of_bills_issued_in: Cantidad de facturas emitidas en
+  are_you_sure: ¿Está seguro?
+
+  back: Volver
+  back_to: "Volver a %{first_name} %{last_name}"
+  bill: Factura
+  bills_information: Información de Facturas
+  bills_issued: Facturas Emitidas
+  birthday: Cumpleaños
+
+  cancel: Cancelar
+  client: Cliente
+  clients: Clientes
+  client_information: "Información de %{first_name} %{last_name}"
+  contact_info: Información de contacto
+  choose_an_action_to_begin: Elije una acción para comenzar
+  choose_your_side: Elije un lado
+  cuit: Cuit
+
+  dark_side: Lado oscuro
+  date_word: Fecha
+  date:
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+  description: Descripción
+  destroy: Borrar
+  dni: Dni
+
+  ebilling_system: E-Billing system
+  edit: "Editar %{obj}"
+  editing_bill: Editando Factura
+  editing_client: Editando Cliente
+  editing_contact_info: Editando Información de Contacto
+  editing_person: Editando Persona
+  email: Email
+
+  female: Mujer
+  first_name: Nombre
+
+  gender: Género
+
+  issue_date: Fecha de emisión
+
+  last_name: Apellido
+  legal: Jurídica
+  light_side: Lado luminoso
+  list_bills: Listar facturas
+  list_clients: Listar clientes
+  list_people: Listar personas
+
+  listing_bills: "Listando las facturas de %{first_name} %{last_name}"
+  listing_clients: Listando clientes
+  listing_people: Listando personas
+  listing_contact_infos: Listando información de contacto
+
+  name: Nombre
+  new_bill: Nueva factura
+  new_contact_info: Nueva info. de contacto
+  new_contact_info_for: "Nueva información de contacto para %{first_name} %{last_name}"
+  new_client: Nuevo cliente
+  new_person: Nueva persona
+  number: Número
+
+  male: Hombre
+  more_info: Más información
+  most_bills_issued_people: Personas que más se ha facturado
+
+  only_once_you_can_choose: Sólo una vez, tu puedes elegir. Que la fuerza te acompañe.
+
+  people: Personas
+  person: Persona
+  prohibited_this_from_being_saved:  "No se ha podido guardar este/a %{obj}"
+
+  show: Mostrar
+  submit: Enviar
+  successfully_created: "El/La %{obj} ha sido creado/a correctamente."
+  successfully_destroyed: "El/La %{obj} ha sido borrado/a correctamente."
+  successfully_updated: "El/La %{obj} ha sido actualizado/a correctamente."
+
+  total_amount: Cantidad total
+  total_billed_amount_of: Monto total facturado en el
+  the_evader_billing_system: El sistema de facturación de E-Vader
+  type: Tipo
+
+  value: Valor
+  verification: Verificación
+
+  welcome_to_ebilling: Bienvenido a E-billing
+
+  'yes': Si
