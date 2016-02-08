@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  client: with_contact_infos
   name: email
   value: federicogratti@gmail.com
 
 two:
+  client: with_contact_infos
   name: phone_number
   value: 2215456543

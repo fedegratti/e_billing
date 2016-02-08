@@ -38,13 +38,13 @@ class ClientTest < ActiveSupport::TestCase
     @client_with_bills = clients(:with_bills)
 
     #amount of bills after deletion
-    bill_amount = Bill.count - @client_with_bills.bills.count
+    bills_amount = Bill.count - @client_with_bills.bills.count
 
     assert_difference('Client.count', -1) do
         @client_with_bills.destroy
     end
 
-    assert_equal(bill_amount, Bill.count)
+    assert_equal(bills_amount, Bill.count)
   end
 
   test 'delete client without registered bills' do
@@ -56,6 +56,15 @@ class ClientTest < ActiveSupport::TestCase
   end
 
   test 'delete client with registered contact infos' do
-      assert false
+    @client_with_contact_infos = clients(:with_contact_infos)
+
+      #amount of contact infos after deletion
+      contact_infos_amount = ContactInfo.count - @client_with_contact_infos.contact_infos.count
+
+      assert_difference('Client.count', -1) do
+          @client_with_contact_infos.destroy
+      end
+
+      assert_equal(contact_infos_amount, ContactInfo.count)
   end
 end

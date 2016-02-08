@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class BillTest < ActiveSupport::TestCase
-
   test 'new bill without validation error' do
    @regular_bill = Bill.new do |b|
       b.client_id = Client.take.id

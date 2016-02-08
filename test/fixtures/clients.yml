@@ -24,3 +24,10 @@ with_bills:
   dni: 12345680
   cuit: 27123456801
 
+with_contact_infos:
+  first_name: Name
+  last_name: Last
+  birthday: 1999-06-03
+  gender: F
+  dni: 38654659
+  cuit: 27386546598
