@@ -1,6 +1,11 @@
 # e_billing
 The E-Vader's billing system.
 
+##Demo:
+
+Try this app!
+[a link](https://ebilling.herokuapp.com/)
+
 ##Instalation:
 
 Clone this repo, open a terminal, go to the repo's folder and run the following commands:
