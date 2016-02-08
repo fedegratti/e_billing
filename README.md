@@ -3,8 +3,7 @@ The E-Vader's billing system.
 
 ##Demo:
 
-Try this app!
-[a link](https://ebilling.herokuapp.com/)
+[Try this app!](https://ebilling.herokuapp.com/)
 
 ##Instalation:
 
