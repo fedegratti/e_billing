@@ -3,9 +3,7 @@ The E-Vader's billing system.
 
 ##Instalation:
 
-Just like any rails app ;)
-
-Clone this repo, open a terminal on the repo's folder and run the following commands:
+Clone this repo, open a terminal, go to the repo's folder and run the following commands:
 
 1: Install all the gems we need.
  `bundle install`
@@ -21,3 +19,7 @@ And that's it!
 Just run rails using  `rails s`
 
 Enjoy!
+
+##Entity–relationship model:
+
+![alt tag](https://raw.githubusercontent.com/fedegratti/e_billing/master/ERD_E_Billing.png)
