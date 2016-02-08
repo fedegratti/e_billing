@@ -1,6 +1,3 @@
-<h1>Editing Bill</h1>
+<h1><%= t('editing_bill') %></h1>
 
 <%= render 'form', action:'update' %>
-
-<%= link_to 'Show', client_bill_path(@client, @bill) %> |
-<%= link_to 'Back', client_bills_path %>
