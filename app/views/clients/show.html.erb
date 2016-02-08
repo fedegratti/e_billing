@@ -1,117 +1,181 @@
-<div class="col-lg-6">
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First Name:</strong>
-  <%= @client.first_name %>
-</p>
-
-<p>
-  <strong>Last Name:</strong>
-  <%= @client.last_name %>
-</p>
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @client.birthday %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @client.gender == "F" ? "Female" : "Male" %>
-</p>
-
-<p>
-  <strong>Dni:</strong>
-  <%= @client.dni %>
-</p>
-
-<p>
-  <strong>Cuit:</strong>
-  <%= @client.cuit %>
-</p>
-
-<% for @contact_info in @client.contact_infos %>
-  <p>
-    <strong><%= @contact_info.name.titleize %>:</strong>
-    <%= @contact_info.value %>
-  </p>
+<% if notice %>
+<div class="alert alert-dismissable alert-success">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <%= notice %>
+</div>
 <% end %>
 
-<p>
-  <strong>Bills issued:</strong>
-  <%= @client.bills.count %>
-</p>
-</div>
+<div class="col-lg-4">
 
-<div class="col-lg-6">
-  Age: <%= @client.age %>
-  <br>
-  <br>
-  <div id="selectContainter">
-    <div class="floatLeft"> Amount of bills issued in </div>
-    <select id="amountOfBillsSelect" class="floatLeft">
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-    </select>
-    <div id="amountOfBills" class="floatLeft">
-     <%= Time.now.utc.to_date.year %>&nbsp;=&nbsp;<%= @client.amount_of_bills_issued_in 1 %>
-    </div>
-  </div>
+<h1><%= t('client_information', first_name: @client.first_name, last_name: @client.last_name) %></h1>
 
-  <br>
-  <br>
+<table class="table table-striped table-hover ">
+  <tbody>
+    <tr>
+      <td>
+        <strong><%= t('first_name') %></strong>
+      </td>
+      <td>
+        <%= @client.first_name %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('last_name') %></strong>
+      </td>
+      <td>
+        <%= @client.last_name %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('birthday') %></strong>
+      </td>
+      <td>
+        <%= @client.birthday %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('age') %></strong>
+      </td>
+      <td>
+        <%= @client.age %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('gender') %></strong>
+      </td>
+      <td>
+        <%= @client.gender == "F" ? t('female') : t('male') %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('dni') %></strong>
+      </td>
+      <td>
+        <%= @client.dni %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('cuit') %></strong>
+      </td>
+      <td>
+        <%= @client.cuit %>
+      </td>
+      <td colspan="2"></td>
+    </tr>
 
-  <div id="selectContainter">
-    <div class="floatLeft"> Total billed amount of </div>
-    <select id="totalAmountSelect" class="floatLeft">
-        <option>2015</option>
-        <option selected="true">2016</option>
-        <option>2017</option>
-    </select>
-    <div id="totalAmount" class="floatLeft">
-     =&nbsp; $<%= @client.total_billed_amount_collected_in 2016 %>
-    </div>
-  </div>
-
-  <% @people_with_amount = @client.most_bills_issued_people %>
-  <div class="page-header">
-    <h2 id="tables">Most bills issued people</h2>
-  </div>
-  <div class="bs-component">
-    <table class="table table-striped table-hover ">
-      <thead>
-      <tr>
-        <th>Person</th>
-        <th>Amount</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%  @people_with_amount.each do |person| %>
-          <tr>
-            <td><%= person[0].name %></td>
-            <td><%= person[1] %></td>
-          </tr>
+      <% for @contact_info in @client.contact_infos %>
+        <tr>
+          <td>
+            <strong><%= @contact_info.name.titleize %></strong>
+          </td>
+          <td>
+            <%= @contact_info.value %>
+          </td>
+          <td>
+            <%= link_to t('edit',obj: ""), edit_client_contact_info_path(@client, @contact_info) %>
+          </td>
+          <td>
+            <%= link_to t('destroy'), client_contact_info_path(@client, @contact_info), method: :delete, data: { confirm: t('are_you_sure') } %>
+          </td>
+        </tr>
       <% end %>
-      </tbody>
-    </table>
-  </div>
+
+  </tbody>
+</table>
+
+<%= link_to t('new_contact_info'), new_client_contact_info_path(@client), class:"btn btn-primary" %>
+<%= link_to t('edit', obj: t('client')), edit_client_path(@client), class:"btn btn-primary" %>
+<%= link_to t('back'), clients_path, class:"btn btn-primary" %>
+
+</div>
+<div class="col-lg-1">
+</div>
+<div class="col-lg-6">
+
+<h1><%= t('bills_information') %></h1>
+
+<table class="table table-striped table-hover ">
+  <tbody>
+    <tr>
+      <td class="col-lg-6">
+        <strong>
+          <%= t('amount_of_bills_issued_in') %>
+          <%= select_month(Date.today, {:field_name => 'amountOfBillsSelect'})%>
+          <%= Time.now.utc.to_date.year %>
+        </strong>
+      </td>
+      <td>
+        <div id="amountOfBills">
+           <%= @client.amount_of_bills_issued_in Date.today %>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td class="col-lg-6">
+        <strong>
+          <%= t('total_billed_amount_of') %>
+          <%= select_year(Date.today, {:field_name => "totalAmountSelect", :start_year => Date.today.prev_year.year, :end_year => Date.today.next_year.year}) %>
+        </strong>
+      </td>
+      <td>
+        <div id="totalAmount">
+          $ <%= @client.total_billed_amount_collected_in Date.today.year %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-lg-6">
+        <strong><%= t('bills_issued') %></strong>
+      </td>
+      <td>
+        <%= @client.bills.count %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to t('new_bill'), new_client_bill_path(@client), class:"btn btn-primary" %>
+<%= link_to t('list_bills'), client_bills_path(@client), class:"btn btn-primary" %>
+
+<% @people_with_amount = @client.most_bills_issued_people %>
+<br>
+<br>
+<h1 id="tables"><%= t('most_bills_issued_people') %></h1>
+<div class="bs-component">
+  <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+      <th><%= t('person') %></th>
+      <th><%= t('amount') %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%  @people_with_amount.each do |person| %>
+        <tr>
+          <td><%= person[0].name %></td>
+          <td><%= person[1] %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to 'New bill', new_client_bill_path(@client), class:"btn btn-primary" %>
-<%= link_to 'New contact info', new_client_contact_info_path(@client), class:"btn btn-primary" %>
-<%= link_to 'Edit', edit_client_path(@client), class:"btn btn-primary" %>
-<%= link_to 'Back', clients_path, class:"btn btn-primary" %>
+</div>
+<div class="col-lg-1">
+</div>
 
 <script type="text/javascript">
   var total_billed_amount_path = "<%= total_billed_amount_client_path %>"
@@ -119,23 +183,23 @@
 
   $( document ).ready(function() {
     //Get total billed amount of the selected year
-    $('#totalAmountSelect').change(function ()
+    $('#date_totalAmountSelect').change(function ()
       {
         $.ajax({
-          url: total_billed_amount_path + $('#totalAmountSelect').val(),
+          url: total_billed_amount_path + $('#date_totalAmountSelect').val(),
           success: function (data) {
-            $('#totalAmount').html("=&nbsp; $"+data);
+            $('#totalAmount').html("$ "+data);
           }
         });
       });
 
     //Get amount of bills issued on the selected month
-    $('#amountOfBillsSelect').change(function ()
+    $('#date_amountOfBillsSelect').change(function ()
       {
         $.ajax({
-          url: amount_of_bills_path + $('#amountOfBillsSelect').val(),
+          url: amount_of_bills_path + $('#date_amountOfBillsSelect').val(),
           success: function (data) {
-            $('#amountOfBills').html("<%= Time.now.utc.to_date.year %>&nbsp;=&nbsp;"+data);
+            $('#amountOfBills').html(data);
           }
         });
       });
