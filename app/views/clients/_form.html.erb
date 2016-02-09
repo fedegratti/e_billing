@@ -54,7 +54,7 @@
             <div class="form-group">
               <%= f.label t('birthday'), class:'col-lg-2 control-label' %>
               <div class="col-lg-10">
-                <%= f.date_field :birthday, class:'form-control', placeholder: t('birthday') %>
+                <%= f.date_field :birthday, class:'form-control', placeholder: t('birthday'), required: true %>
               </div>
             </div>
           </div>
@@ -93,13 +93,13 @@
               <%= f.label t('cuit'), class:' control-label' %>
             </div>
             <div class="form-group col-xs-2">
-              <input class="form-control " placeholder="<%= t('type') %>" type="text" id="type_cuit" maxlength="2">
+              <input class="form-control " placeholder="<%= t('type') %>" type="text" id="type_cuit" maxlength="2", required="true">
             </div>
             <div class="form-group col-xs-6">
-              <input class="form-control " placeholder="<%= t('number') %>" type="text" id="number_cuit" maxlength="8">
+              <input class="form-control " placeholder="<%= t('number') %>" type="text" id="number_cuit" maxlength="8", required="true">
             </div>
             <div class="form-group col-xs-2">
-              <input class="form-control " placeholder="<%= t('verification') %>" type="text" id="verification_cuit" maxlength="1">
+              <input class="form-control " placeholder="<%= t('verification') %>" type="text" id="verification_cuit" maxlength="1", required="true">
             </div>
           </div>
 
