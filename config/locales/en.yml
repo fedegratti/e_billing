@@ -41,7 +41,7 @@ en:
   choose_your_side: Choose your side
   cuit: Cuit
 
-  dark_side: Light side
+  dark_side: Dark side
   date_word: Date
   date:
     month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
