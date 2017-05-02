@@ -1,11 +1,11 @@
 # e_billing
 The E-Vader's billing system.
 
-##Demo:
+## Demo:
 
 [Try this app!](https://ebilling.herokuapp.com/)
 
-##Instalation:
+## Instalation:
 
 Clone this repo, open a terminal, go to the repo's folder and run the following commands:
 
@@ -24,6 +24,6 @@ Just run rails using  `rails s`
 
 Enjoy!
 
-##Entity–relationship model:
+## Entity–relationship model:
 
 ![alt tag](https://raw.githubusercontent.com/fedegratti/e_billing/master/ERD_E_Billing.png)
